@@ -8,6 +8,9 @@ MY_PROJECT = os.environ.get('MY_PROJECT', 'My Project Name')
 #MY_PROJECT = os.environ.get('MY_PROJECT') or 'My Project Name' # this will also a valid syntax
 API_KEY = os.environ.get('API_KEY')
 
+if not API_KEY:
+    raise NotImplementedError("API KEY is not set....")
+
 @app.get("/")
 def read_index():
     return {"greet": "hari bol", "project_name": MY_PROJECT, 'api_key': API_KEY}
